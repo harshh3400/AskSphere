@@ -1,0 +1,169 @@
+/* Sidebar.css */
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 16px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 20;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.sidebar.open {
+  width: 280px;
+}
+.sidebar.collapsed {
+  width: 80px;
+  align-items: center;
+}
+
+/* Top Section */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.menu-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background 0.2s;
+}
+
+.menu-icon:hover {
+  background-color: rgba(206, 13, 13, 0.05);
+  color: var(--text-main);
+}
+
+.new-chat {
+  background-color: var(--bg-color); /* Darker than sidebar */
+  color: var(--text-main);
+  padding: 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+  width: 250px;
+  height: 50px;
+}
+
+.sidebar.collapsed .new-chat {
+  justify-content: center;
+  padding: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Circle in collapsed mode */
+}
+
+.new-chat:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* History List */
+.history-container {
+  flex: 1;
+  overflow-y: auto;
+  margin: 30px 0;
+  padding-right: 4px; /* Space for scrollbar */
+}
+
+.history-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-list li {
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.history-list li:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-main);
+}
+
+.history-list li.active {
+  background-color: rgba(20, 184, 166, 0.1); /* Subtle teal tint */
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.chat-icon {
+  font-size: 14px;
+}
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom Section */
+.bottom-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bottom-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.bottom-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+.sidebar.collapsed .bottom-item {
+  justify-content: center;
+}
+.deleteButton:hover {
+  color: red;
+}
