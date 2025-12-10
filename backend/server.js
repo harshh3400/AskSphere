@@ -5,22 +5,23 @@ import { generateGeminiResponse } from "./utils/geminiUtils.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
-
-import chatRoutes from "./routes/Chat.js"
+import chatRoutes from "./routes/Chat.js";
 import authRouter from "./routes/auth.js";
 dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/api/auth', authRouter);
-app.use('/api', chatRoutes);//express routing 
+app.use("/api/auth", authRouter);
+app.use("/api", chatRoutes); //express routing
 
 const connectDb = async () => {
   try {
@@ -29,12 +30,12 @@ const connectDb = async () => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-app.get('/', (req, res) => {
-  res.send("hi keshav this is root path");
-})
-app.post("/chat", async (req, res) =>  {
+app.get("/", (req, res) => {
+  res.send("This is root path");
+});
+app.post("/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
 
