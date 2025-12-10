@@ -35,6 +35,7 @@ A modern, full-stack AI chat application built with React, Node.js, Express, Mon
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React 19** - UI library
 - **React Router DOM** - Client-side routing
 - **Vite** - Fast development build tool
@@ -44,6 +45,7 @@ A modern, full-stack AI chat application built with React, Node.js, Express, Mon
 - **UUID** - Unique thread ID generation
 
 ### Backend
+
 - **Node.js** - Runtime environment
 - **Express 5** - Web framework
 - **MongoDB + Mongoose** - Database and ODM
@@ -151,6 +153,7 @@ AskSphere/
 **Purpose**: Stores individual conversations with the AI.
 
 **Key Fields**:
+
 - `threadId`: Unique identifier for each conversation (UUID v1)
 - `message`: Array of chat messages with roles (user/assistant)
 - `title`: Auto-generated from first message (first 30 characters)
@@ -161,19 +164,20 @@ AskSphere/
 
 ### Backend Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `express` | ^5.1.0 | Fast, unopinionated web framework for Node.js |
-| `mongoose` | ^8.19.2 | MongoDB ODM for schema modeling and queries |
-| `@google/generative-ai` | ^0.24.1 | Official Google Gemini AI SDK |
-| `jsonwebtoken` | ^9.0.2 | Create and verify JWT tokens for authentication |
-| `bcryptjs` | ^3.0.3 | Hash passwords securely (alternative to bcrypt) |
-| `cookie-parser` | ^1.4.7 | Parse Cookie header and populate `req.cookies` |
-| `cors` | ^2.8.5 | Enable CORS with various options |
-| `dotenv` | ^17.2.3 | Load environment variables from `.env` file |
-| `nodemon` | ^3.1.10 | Auto-restart server on file changes (dev only) |
+| Package                 | Version | Purpose                                         |
+| ----------------------- | ------- | ----------------------------------------------- |
+| `express`               | ^5.1.0  | Fast, unopinionated web framework for Node.js   |
+| `mongoose`              | ^8.19.2 | MongoDB ODM for schema modeling and queries     |
+| `@google/generative-ai` | ^0.24.1 | Official Google Gemini AI SDK                   |
+| `jsonwebtoken`          | ^9.0.2  | Create and verify JWT tokens for authentication |
+| `bcryptjs`              | ^3.0.3  | Hash passwords securely (alternative to bcrypt) |
+| `cookie-parser`         | ^1.4.7  | Parse Cookie header and populate `req.cookies`  |
+| `cors`                  | ^2.8.5  | Enable CORS with various options                |
+| `dotenv`                | ^17.2.3 | Load environment variables from `.env` file     |
+| `nodemon`               | ^3.1.10 | Auto-restart server on file changes (dev only)  |
 
 **Why these packages?**
+
 - **Express**: Industry-standard for Node.js APIs
 - **Mongoose**: Provides schema validation and relationship management
 - **Gemini AI**: State-of-the-art LLM with multimodal capabilities
@@ -184,17 +188,18 @@ AskSphere/
 
 ### Frontend Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `react` | ^19.1.1 | Core React library |
-| `react-dom` | ^19.1.1 | React DOM renderer |
-| `react-router-dom` | ^7.9.6 | Declarative routing for React apps |
-| `react-markdown` | ^10.1.0 | Render Markdown as React components |
-| `rehype-highlight` | ^7.0.2 | Syntax highlighting for code blocks |
-| `react-spinners` | ^0.17.0 | Loading spinner components |
-| `uuid` | ^13.0.0 | Generate unique identifiers (v1 for thread IDs) |
+| Package            | Version | Purpose                                         |
+| ------------------ | ------- | ----------------------------------------------- |
+| `react`            | ^19.1.1 | Core React library                              |
+| `react-dom`        | ^19.1.1 | React DOM renderer                              |
+| `react-router-dom` | ^7.9.6  | Declarative routing for React apps              |
+| `react-markdown`   | ^10.1.0 | Render Markdown as React components             |
+| `rehype-highlight` | ^7.0.2  | Syntax highlighting for code blocks             |
+| `react-spinners`   | ^0.17.0 | Loading spinner components                      |
+| `uuid`             | ^13.0.0 | Generate unique identifiers (v1 for thread IDs) |
 
 **Why these packages?**
+
 - **react-markdown + rehype-highlight**: Display AI responses with proper formatting and syntax-highlighted code
 - **react-router-dom**: Handle navigation and protected routes
 - **uuid**: Generate unique, sortable thread identifiers
@@ -204,12 +209,12 @@ AskSphere/
 
 ### Dev Dependencies
 
-| Package | Purpose |
-|---------|---------|
-| `vite` | Lightning-fast dev server and build tool |
-| `@vitejs/plugin-react` | Enables React Fast Refresh in Vite |
-| `eslint` | Code linting and style enforcement |
-| `eslint-plugin-react-hooks` | Enforce React Hooks rules |
+| Package                     | Purpose                                  |
+| --------------------------- | ---------------------------------------- |
+| `vite`                      | Lightning-fast dev server and build tool |
+| `@vitejs/plugin-react`      | Enables React Fast Refresh in Vite       |
+| `eslint`                    | Code linting and style enforcement       |
+| `eslint-plugin-react-hooks` | Enforce React Hooks rules                |
 
 ---
 
@@ -218,6 +223,7 @@ AskSphere/
 ### Model: `gemini-2.5-flash`
 
 **Why Gemini 2.5 Flash?**
+
 - **Speed**: Optimized for low-latency responses
 - **Context Window**: Large context (up to 1M tokens in some versions)
 - **Multimodal**: Supports text, images, and more
@@ -241,6 +247,7 @@ export const generateGeminiResponse = async (chatHistory, userMessage) => {
 ```
 
 **How it works**:
+
 1. Initialize the Gemini client with API key
 2. Select the model (`gemini-2.5-flash`)
 3. Start a chat session with conversation history
@@ -256,11 +263,12 @@ The backend maintains conversation history in this format:
 ```javascript
 [
   { role: "user", parts: [{ text: "Hello!" }] },
-  { role: "model", parts: [{ text: "Hi! How can I help?" }] }
-]
+  { role: "model", parts: [{ text: "Hi! How can I help?" }] },
+];
 ```
 
 **Key Points**:
+
 - `role: "assistant"` in DB → `role: "model"` for Gemini API
 - Each message stored with timestamp
 - Full history sent with each request for context continuity
@@ -280,17 +288,20 @@ The backend maintains conversation history in this format:
 ### Backend Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repo-url>
    cd AskSphere/backend
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Create `.env` file**
+
    ```env
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/asksphere
@@ -310,11 +321,13 @@ The backend maintains conversation history in this format:
 ### Frontend Setup
 
 1. **Navigate to frontend**
+
    ```bash
    cd ../frontend
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -331,11 +344,11 @@ The backend maintains conversation history in this format:
 
 ### Authentication Routes (`/api/auth`)
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/register` | Create new user account | ❌ |
-| POST | `/login` | Login and receive JWT cookie | ❌ |
-| POST | `/logout` | Clear authentication cookie | ✅ |
+| Method | Endpoint    | Description                  | Auth Required |
+| ------ | ----------- | ---------------------------- | ------------- |
+| POST   | `/register` | Create new user account      | ❌            |
+| POST   | `/login`    | Login and receive JWT cookie | ❌            |
+| POST   | `/logout`   | Clear authentication cookie  | ✅            |
 
 **Request Body Examples**:
 
@@ -358,14 +371,15 @@ The backend maintains conversation history in this format:
 
 ### Chat & Thread Routes (`/api`)
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| GET | `/thread` | Get all threads for logged-in user | ✅ |
-| GET | `/thread/:threadId` | Get messages from specific thread | ✅ |
-| POST | `/chat` | Send message and get AI response | ✅ |
-| DELETE | `/thread/:threadId` | Delete a thread | ✅ |
+| Method | Endpoint            | Description                        | Auth Required |
+| ------ | ------------------- | ---------------------------------- | ------------- |
+| GET    | `/thread`           | Get all threads for logged-in user | ✅            |
+| GET    | `/thread/:threadId` | Get messages from specific thread  | ✅            |
+| POST   | `/chat`             | Send message and get AI response   | ✅            |
+| DELETE | `/thread/:threadId` | Delete a thread                    | ✅            |
 
 **Request Body (POST /chat)**:
+
 ```javascript
 {
   "threadId": "uuid-v1-string",
@@ -374,6 +388,7 @@ The backend maintains conversation history in this format:
 ```
 
 **Response**:
+
 ```javascript
 {
   "success": "React is a JavaScript library..."
@@ -385,16 +400,19 @@ The backend maintains conversation history in this format:
 ## 🔐 Authentication Flow
 
 1. **User Registration**:
+
    - Password hashed with bcryptjs (10 salt rounds)
    - User document created in MongoDB
    - No automatic login (must login separately)
 
 2. **User Login**:
+
    - Password verified using `bcrypt.compare()`
    - JWT token generated with user ID payload
    - Token stored in HTTP-only cookie (1 hour expiry)
 
 3. **Protected Routes**:
+
    - Middleware (`fetchUsers.js`) validates JWT on each request
    - Decoded user ID attached to `req.user`
    - Invalid/missing tokens return 401 Unauthorized
@@ -411,24 +429,26 @@ The backend maintains conversation history in this format:
 ### Theme Variables (CSS)
 
 ```css
---bg-color: #0f172a;           /* Main background */
---sidebar-bg: #1e293b;         /* Sidebar/card background */
---border-color: #334155;       /* Borders */
---text-main: #f8fafc;          /* Primary text */
---text-muted: #94a3b8;         /* Secondary text */
---accent-color: #14b8a6;       /* Teal accent */
---user-msg-bg: #0f766e;        /* User message bubble */
---ai-msg-bg: #334155;          /* AI message bubble */
+--bg-color: #0f172a; /* Main background */
+--sidebar-bg: #1e293b; /* Sidebar/card background */
+--border-color: #334155; /* Borders */
+--text-main: #f8fafc; /* Primary text */
+--text-muted: #94a3b8; /* Secondary text */
+--accent-color: #14b8a6; /* Teal accent */
+--user-msg-bg: #0f766e; /* User message bubble */
+--ai-msg-bg: #334155; /* AI message bubble */
 ```
 
 ### Key UI Components
 
 1. **Sidebar**:
+
    - Collapsible (280px → 80px)
    - Thread history with delete buttons
    - Active thread highlighting
 
 2. **Chat Window**:
+
    - Auto-scroll to latest message
    - Markdown rendering with syntax highlighting
    - Typing animation (20 chars per 30ms)
@@ -473,6 +493,7 @@ This project is open-source and available under the MIT License.
 ## 🤝 Contributing
 
 Contributions are welcome! Please:
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit changes (`git commit -m 'Add AmazingFeature'`)
@@ -484,6 +505,7 @@ Contributions are welcome! Please:
 ## 📧 GitHub Profile
 
 reach out at: GitHub[https://github.com/harshh3400]
+Email:[plshinde98@gmail.com]
 
 ---
 
