@@ -512,7 +512,6 @@ Email:[plshinde98@gmail.com]
 ## 🙏 Acknowledgments
 
 - **Google Gemini AI** for the powerful LLM
-- **Vercel** for inspiration on modern UI design
 - **React Community** for excellent documentation
 - **MongoDB** for flexible data modeling
 
